@@ -1,4 +1,4 @@
-Outlier detection is Javascript for data streams
+Outlier detection in Javascript for data streams
 =================================================
 
 This is the implementation of a multivariate normal distribution model for
