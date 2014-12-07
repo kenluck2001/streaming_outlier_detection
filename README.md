@@ -15,6 +15,8 @@ We kept two version of the means and covariance matrix which matches the trainin
 
 Here is an example of how to use the library
 
+
+
 var data = $M([
 	  [6,2,8],
 	  [9,1,3],
@@ -29,9 +31,7 @@ var data = $M([
 	  [2,5,3],
 	  [4,6,3],
 	  [3,3,4],
-	  [5,1,8]
-
-	]);
+	  [5,1,8]]);
 
 outlier.trainClassifer(data); //training the classifier
 
@@ -42,9 +42,7 @@ outlier.trainClassifer(data); //training the classifier
 	  [1,6,5],
 	  [6,2,8],
 	  [8,1,2],
-	  [2,7,5]
-
-	]; 
+	  [2,7,5]]; 
 
 outlier.incrementalClassifer(curVal); //incremental train the classifier 
 
