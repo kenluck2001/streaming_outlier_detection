@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<script src="sylvester.js"></script>
+<script src="outlier.js"></script>
+<script>
+
+	/**
+		There are two standard methods of calling the library for incremental
+	*/
+
+	var data = $M([
+	  [6,2,8],
+	  [9,1,3],
+	  [0,7,6],
+	  [2,2,2],
+	  [7,3,8],
+	  [2,1,5],
+	  [0,6,2],
+	  [2,2,2],
+	  [5,1,8],
+	  [1,1,4],
+	  [2,5,3],
+	  [4,6,3],
+	  [3,3,4],
+	  [5,7,8],
+	  [2,1,4],
+	  [2,9,3],
+	  [8,6,3],
+	  [1,1,7],
+	  [2,5,2],
+	  [4,9,3],
+	  [3,3,4],
+	  [5,7,9],
+	  [2,1,4],
+	  [2,10,3],
+	  [10,6,3],
+	  [6,2,8],
+	  [9,1,3],
+	  [0,7,6],
+	  [2,2,2],
+	  [7,3,8],
+	  [2,1,5],
+	  [0,6,2],
+	  [2,2,2],
+	  [5,1,8]
+
+	]);   //m x n where m is size and n is dimensions
+
+
+
+	outlier.trainClassifer(data);
+	outlier.findCovarianceMatrix(data);
+
+	console.log(outlier.mean.elements);
+	console.log(outlier.covMatrix.elements);
+
+	var curVal = [
+	  [5,1,7],
+	  [8,0,2],
+	  [1,6,5],
+	  [6,2,8],
+	  [8,1,2],
+	  [2,7,5]
+
+	];   
+
+
+
+	outlier.incrementalClassifer(curVal);
+	console.log(outlier.mean.elements);
+	console.log(outlier.covMatrix.elements);
+
+	/**
+		The system works by using a subset of the data as training set and use the next time range as test set where we check for outliers.
+	*/
+
+	var testValx = $V([5,1,7]);
+	var status = outlier.checkIfOutlier(testValx)//if true then it is an outlier
+	console.log(status );
+
+
+	curVal = [
+	  [8,1,7],
+	  [8,9,2],
+	  [2,6,5],
+	  [6,9,8],
+	  [8,9,2],
+	  [9,6,5]
+
+
+	];   
+	outlier.incrementalClassifer(curVal);
+	console.log(outlier.mean.elements);
+	console.log(outlier.covMatrix.elements);
+
+
+	curVal = [
+	  [5,7,7],
+	  [18,19,2],
+	  [20,6,5],
+	  [6,90,8],
+	  [1,9,2],
+	  [5,6,5]
+
+
+	];   
+	outlier.incrementalClassifer(curVal);
+	console.log(outlier.mean.elements);
+	console.log(outlier.covMatrix.elements);
+
+	/**
+		set the window size
+	*/
+
+	outlier.setWindowSize(10);
+
+
+
+</script>
